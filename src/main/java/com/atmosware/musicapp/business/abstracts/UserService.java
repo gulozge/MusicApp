@@ -3,6 +3,8 @@ package com.atmosware.musicapp.business.abstracts;
 
 import com.atmosware.musicapp.business.dto.requests.UserLoginRequest;
 import com.atmosware.musicapp.business.dto.requests.UserRequest;
+import com.atmosware.musicapp.business.dto.responses.GetByIdFavoriteSongs;
+import com.atmosware.musicapp.business.dto.responses.SongResponse;
 import com.atmosware.musicapp.business.dto.responses.UserResponse;
 
 import java.util.List;
@@ -26,4 +28,8 @@ public interface UserService {
     void unfollow(UUID userId, UUID followedId);
 
     List<UserResponse> getFollowing(UUID userId);
+    void addSongToFavorites(UUID userId, UUID songId);
+
+    void removeSongFromFavorites(UUID userId, UUID songId);
+    public List<GetByIdFavoriteSongs> getFavoriteSongs(UUID userId);
 }

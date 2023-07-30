@@ -3,10 +3,13 @@ package com.atmosware.musicapp.api.controllers;
 import com.atmosware.musicapp.business.abstracts.UserService;
 import com.atmosware.musicapp.business.dto.requests.UserLoginRequest;
 import com.atmosware.musicapp.business.dto.requests.UserRequest;
+import com.atmosware.musicapp.business.dto.responses.GetByIdFavoriteSongs;
+import com.atmosware.musicapp.business.dto.responses.SongResponse;
 import com.atmosware.musicapp.business.dto.responses.UserResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,6 +54,7 @@ public class UsersController {
     }
 
     @PostMapping("/{userId}/follow/{followId}")
+    @ResponseStatus(HttpStatus.CREATED)
     public void follow(@PathVariable UUID userId, @PathVariable UUID followId) {
         service.follow(userId, followId);
     }
@@ -64,6 +68,23 @@ public class UsersController {
     @GetMapping("/{userId}/following")
     public List<UserResponse> getFollowing(@PathVariable UUID userId) {
         return service.getFollowing(userId);
+    }
+
+    @PostMapping("/{userId}/favorites/{songId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addSongToFavorites(@PathVariable UUID userId, @PathVariable UUID songId) {
+         service.addSongToFavorites(userId,songId);
+    }
+
+    @DeleteMapping("/{userId}/favorites/{songId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removeSongFromFavorites(@PathVariable UUID userId, @PathVariable UUID songId) {
+        service.removeSongFromFavorites(userId, songId);
+    }
+
+    @GetMapping("/{userId}/favoriteSongs")
+    public List<GetByIdFavoriteSongs> getFavoriteSongs(@PathVariable UUID userId) {
+        return service.getFavoriteSongs(userId);
     }
 
 }

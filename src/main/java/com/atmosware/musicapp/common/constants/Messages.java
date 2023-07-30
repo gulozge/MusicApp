@@ -28,4 +28,7 @@ public class Messages {
     public static class Song {
         public static final String NotExists = "ALBUM_NOT_EXISTS";
     }
+    public static class FavoriteSong {
+        public static final String Exists = "FAVORITE-SONG-ALREADY_EXISTS";
+    }
 }

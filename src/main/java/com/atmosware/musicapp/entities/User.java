@@ -32,4 +32,12 @@ public class User extends BaseUser {
     private Set<User> followers = new HashSet<>();
 
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_favorite_songs",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "song_id"))
+    private Set<Song> favoriteSongs = new HashSet<>();
+
+
 }

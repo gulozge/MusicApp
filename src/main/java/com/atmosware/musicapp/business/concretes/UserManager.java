@@ -1,12 +1,17 @@
 package com.atmosware.musicapp.business.concretes;
 
 
+import com.atmosware.musicapp.business.abstracts.SongService;
 import com.atmosware.musicapp.business.abstracts.UserService;
 import com.atmosware.musicapp.business.dto.requests.UserLoginRequest;
 import com.atmosware.musicapp.business.dto.requests.UserRequest;
+import com.atmosware.musicapp.business.dto.responses.GetByIdFavoriteSongs;
+import com.atmosware.musicapp.business.dto.responses.SongResponse;
 import com.atmosware.musicapp.business.dto.responses.UserResponse;
+import com.atmosware.musicapp.business.rules.FavoriteSongsBusinessRules;
 import com.atmosware.musicapp.business.rules.FollowerBusinessRules;
 import com.atmosware.musicapp.business.rules.UserBusinessRules;
+import com.atmosware.musicapp.entities.Song;
 import com.atmosware.musicapp.entities.User;
 import com.atmosware.musicapp.entities.enums.Role;
 import com.atmosware.musicapp.repository.UserRepository;
@@ -17,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +31,8 @@ public class UserManager implements UserService {
     private final UserBusinessRules rules;
     private final FollowerBusinessRules followerBusinessRules;
     private final PasswordEncoder passwordEncoder;
+    private final SongService songService;
+    private final FavoriteSongsBusinessRules favoriteSongsBusinessRules;
 
     @Override
     public List<UserResponse> getAll() {
@@ -117,6 +125,45 @@ public class UserManager implements UserService {
                         .lastname(followedUser.getLastname())
                         .userName(followedUser.getUserName())
                         .email(followedUser.getEmail())
+                        .build())
+                .toList();
+    }
+
+    @Override
+    @Transactional
+    public void addSongToFavorites(UUID userId, UUID songId) {
+        User user = repository.findById(userId).orElseThrow();
+        SongResponse song = songService.getById(songId);
+        Song convertSong=songService.mapToSong(song);
+        favoriteSongsBusinessRules.checkIfAlreadyFavoriteSong(user,convertSong);
+        user.getFavoriteSongs().add(convertSong);
+        repository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public void removeSongFromFavorites(UUID userId, UUID songId) {
+        User user = repository.findById(userId).orElseThrow();
+        SongResponse song = songService.getById(songId);
+        Song convertSong= songService.mapToSong(song);
+        user.getFavoriteSongs().remove(convertSong);
+        repository.save(user);
+    }
+
+    @Override
+    public List<GetByIdFavoriteSongs> getFavoriteSongs(UUID userId) {
+        rules.checkIfUserExists(userId);
+        User user = repository.findById(userId).orElseThrow();
+        return user.getFavoriteSongs()
+                .stream()
+                .map(favoriteSong -> GetByIdFavoriteSongs
+                        .builder()
+                        .id(favoriteSong.getId())
+                        .artistName(favoriteSong.getArtist().getFirstName())
+                        .name(favoriteSong.getName())
+                        .description(favoriteSong.getDescription())
+                        .category(favoriteSong.getCategory())
+                        .lyrics(favoriteSong.getLyrics())
                         .build())
                 .toList();
     }
