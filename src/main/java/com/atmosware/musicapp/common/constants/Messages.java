@@ -1,5 +1,8 @@
 package com.atmosware.musicapp.common.constants;
 
+import com.atmosware.musicapp.api.controllers.ArtistsController;
+import com.atmosware.musicapp.api.controllers.SongsController;
+
 public class Messages {
     public static class User {
         public static final String NotFound = "USER_NOT_FOUND";
@@ -13,5 +16,16 @@ public class Messages {
     } public static class Follower {
         public static final String Exists = "FOLLOW_ALREADY_EXISTS";
         public static final String NotFollwed = "NOT_FOllWED_YOURSELF";
+    }
+    public static class Album {
+        public static final String NotExists = "ALBUM_NOT_EXISTS";
+    }
+
+    public static class Artist {
+        public static final String NotFound = "ARTIST_NOT_FOUND";
+    }
+
+    public static class Song {
+        public static final String NotExists = "ALBUM_NOT_EXISTS";
     }
 }
