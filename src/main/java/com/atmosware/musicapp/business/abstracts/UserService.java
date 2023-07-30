@@ -20,4 +20,10 @@ public interface UserService {
     void delete(UUID id);
 
     void login(UserLoginRequest request);
+
+    void follow(UUID userId, UUID followedId);
+
+    void unfollow(UUID userId, UUID followedId);
+
+    List<UserResponse> getFollowing(UUID userId);
 }

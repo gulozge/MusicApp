@@ -47,7 +47,23 @@ public class UsersController {
 
     @PostMapping("/login")
     public void login(@Valid @RequestBody UserLoginRequest request) {
-         service.login(request);
+        service.login(request);
+    }
+
+    @PostMapping("/{userId}/follow/{followId}")
+    public void follow(@PathVariable UUID userId, @PathVariable UUID followId) {
+        service.follow(userId, followId);
+    }
+
+    @DeleteMapping("/{userId}/unfollow{unfollowedId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void unfollow(@PathVariable UUID userId, @PathVariable UUID unfollowedId) {
+        service.unfollow(userId, unfollowedId);
+    }
+
+    @GetMapping("/{userId}/following")
+    public List<UserResponse> getFollowing(@PathVariable UUID userId) {
+        return service.getFollowing(userId);
     }
 
 }
