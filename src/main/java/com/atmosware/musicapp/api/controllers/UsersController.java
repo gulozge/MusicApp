@@ -87,4 +87,9 @@ public class UsersController {
         return service.getFavoriteSongs(userId);
     }
 
+    @GetMapping("/{userId}/commonFavorites/{followedId}")
+    public List<GetByIdFavoriteSongs> getCommonFavorites(@PathVariable UUID userId, @PathVariable UUID followedId) {
+        return service.getCommonFavoriteSongs(userId, followedId);
+    }
+
 }

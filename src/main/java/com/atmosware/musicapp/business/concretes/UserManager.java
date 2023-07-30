@@ -168,4 +168,17 @@ public class UserManager implements UserService {
                 .toList();
     }
 
+    @Override
+    public List<GetByIdFavoriteSongs> getCommonFavoriteSongs(UUID userId, UUID followedId) {
+        rules.checkIfUserExists(userId);
+        rules.checkIfUserExists(followedId);
+        List<GetByIdFavoriteSongs> userFavoriteSongs = getFavoriteSongs(userId);
+        List<GetByIdFavoriteSongs> followedUserFavoriteSongs = getFavoriteSongs(followedId);
+
+        List<GetByIdFavoriteSongs> commonFavoriteSongs = userFavoriteSongs
+                .stream()
+                .filter(followedUserFavoriteSongs::contains)
+                .collect(Collectors.toList());
+        return commonFavoriteSongs;
+    }
 }

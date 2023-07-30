@@ -32,4 +32,5 @@ public interface UserService {
 
     void removeSongFromFavorites(UUID userId, UUID songId);
     public List<GetByIdFavoriteSongs> getFavoriteSongs(UUID userId);
+    public List<GetByIdFavoriteSongs> getCommonFavoriteSongs(UUID userId, UUID followedId);
 }
