@@ -15,11 +15,11 @@ import com.atmosware.musicapp.entities.Album;
 import com.atmosware.musicapp.entities.Song;
 import com.atmosware.musicapp.repository.SongRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -30,6 +30,7 @@ public class SongManager implements SongService {
     private final SongBusinessRules rules;
     private final ArtistBusinessRules artistBusinessRules;
     private final AlbumBusinessRules albumBusinessRules;
+    private final RedisTemplate<String, String> redisTemplate;
 
 
     @Override
@@ -232,6 +233,23 @@ public class SongManager implements SongService {
 
     private UUID getAlbumId(Song song) {
         return Optional.ofNullable(song.getAlbum()).map(Album::getId).orElse(null);
+    }
+
+    public List<SongResponse> getMostFavoriteSongs(int limit) {
+        String songFavoritesKey = "song_favorites";
+        Set<ZSetOperations.TypedTuple<String>> mostFavoriteSongsWithScores =
+                         redisTemplate.
+                        opsForZSet().
+                        reverseRangeWithScores(songFavoritesKey, 0, limit - 1);
+
+        List<SongResponse> mostFavoriteSongs = new ArrayList<>();
+        for (ZSetOperations.TypedTuple<String> tuple : mostFavoriteSongsWithScores) {
+            UUID songId = UUID.fromString(tuple.getValue());
+            SongResponse song = getById(songId);
+            mostFavoriteSongs.add(song);
+        }
+
+        return mostFavoriteSongs;
     }
 
 }

@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,7 +33,6 @@ public class UsersController {
     }
 
     @PostMapping("/registion")
-    @ResponseStatus(HttpStatus.CREATED)
     public UserResponse add(@Valid @RequestBody UserRequest request) {
         return service.add(request);
     }
@@ -59,7 +59,7 @@ public class UsersController {
         service.follow(userId, followId);
     }
 
-    @DeleteMapping("/{userId}/unfollow{unfollowedId}")
+    @DeleteMapping("/{userId}/unfollow/{unfollowedId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void unfollow(@PathVariable UUID userId, @PathVariable UUID unfollowedId) {
         service.unfollow(userId, unfollowedId);
@@ -91,5 +91,4 @@ public class UsersController {
     public List<GetByIdFavoriteSongs> getCommonFavorites(@PathVariable UUID userId, @PathVariable UUID followedId) {
         return service.getCommonFavoriteSongs(userId, followedId);
     }
-
 }

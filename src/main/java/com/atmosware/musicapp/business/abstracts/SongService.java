@@ -28,5 +28,6 @@ public interface SongService {
     List<SongResponse> getAllBySongName(String songName);
 
     List<SongResponse> getAllByArtistNameAndSongName(String artistName, String songName);
+    public List<SongResponse> getMostFavoriteSongs(int limit);
 
 }

@@ -7,6 +7,7 @@ import com.atmosware.musicapp.business.dto.responses.ArtistResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,19 +31,22 @@ public class ArtistsController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ArtistResponse add(@Valid @RequestBody ArtistRequest request) {
         return service.add(request);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ArtistResponse update(@PathVariable UUID id, @Valid @RequestBody ArtistRequest request) {
         return service.update(id, request);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     void delete(@PathVariable UUID id) {
         service.delete(id);
     }
-
 }
+

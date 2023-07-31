@@ -64,6 +64,8 @@ public class SongsController {
     public List<SongResponse> getAllByArtistNameAndSongName(@PathVariable String artistName, @PathVariable String songName) {
         return service.getAllByArtistNameAndSongName(artistName, songName);
     }
-
-
+    @GetMapping("/{limit}/mostfsvoritedsongs")
+    public List<SongResponse> getMostFavoriteSongs(@PathVariable int limit){
+        return service.getMostFavoriteSongs(limit);
+    }
 }

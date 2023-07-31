@@ -16,6 +16,7 @@ import com.atmosware.musicapp.entities.User;
 import com.atmosware.musicapp.entities.enums.Role;
 import com.atmosware.musicapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +34,7 @@ public class UserManager implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final SongService songService;
     private final FavoriteSongsBusinessRules favoriteSongsBusinessRules;
+    private final RedisTemplate<String, String> redisTemplate;
 
     @Override
     public List<UserResponse> getAll() {
@@ -132,12 +134,19 @@ public class UserManager implements UserService {
     @Override
     @Transactional
     public void addSongToFavorites(UUID userId, UUID songId) {
+        rules.checkIfUserExists(userId);
         User user = repository.findById(userId).orElseThrow();
         SongResponse song = songService.getById(songId);
         Song convertSong=songService.mapToSong(song);
         favoriteSongsBusinessRules.checkIfAlreadyFavoriteSong(user,convertSong);
         user.getFavoriteSongs().add(convertSong);
         repository.save(user);
+
+        String userFavoritesKey = "user_favorites";
+        redisTemplate.opsForZSet().incrementScore(userFavoritesKey, userId.toString(), 1);
+        String songFavoritesKey = "song_favorites";
+        redisTemplate.opsForZSet().incrementScore(songFavoritesKey, songId.toString(), 1);
+
     }
 
     @Override

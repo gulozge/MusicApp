@@ -7,6 +7,7 @@ import com.atmosware.musicapp.business.dto.responses.AlbumResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class AlbumsController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('ADMIN')")
     public AlbumResponse add(@Valid @RequestBody AlbumRequest request) {
         return service.add(request);
     }
