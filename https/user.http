@@ -1,0 +1,98 @@
+### getAll
+GET http://localhost:8090/api/users/getAll
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+### getById
+GET http://localhost:8090/api/users/getById/0b71d11f-8437-4de9-b70c-ddd044e1aa23
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+### Registion
+POST http://localhost:8090/api/users/registion
+Content-Type: application/json
+
+{
+  "firstname": "Yaren",
+  "lastname": "Kılıç",
+  "userName": "Yağmur",
+  "email": "yaren@gmail.com",
+  "password": "Yaren23."
+}
+
+###
+
+POST http://localhost:8090/api/users/login
+Content-Type: application/json
+
+{
+  "userName": "Özge Gül",
+  "password": "OzgeGul23."
+}
+
+### logout
+POST http://localhost:8090/api/users/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJ1c2VySWQiOiIwM2ZmZGEzOS1mMTk2LTQ3ZmItODJjYi02ZDZhZWZiODM3NWUiLCJzdWIiOiJZYcSfbXVyIiwiaWF0IjoxNjkxNjc2NzQwLCJleHAiOjE2OTE5MjcwNjd9.p1xnMCRMRPpBPnsZX5QXC-9LKeSeTHhH7UznqmPno-M
+
+### Update
+PUT http://localhost:8090/api/users/0b71d11f-8437-4de9-b70c-ddd044e1aa23
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJ1c2VySWQiOiIwYjcxZDExZi04NDM3LTRkZTktYjcwYy1kZGQwNDRlMWFhMjMiLCJzdWIiOiLDlnpnZSBHw7xsIiwiaWF0IjoxNjkxNjc3NTI2LCJleHAiOjE2OTE3Mjc1OTJ9.3Cki8VgPNeZm4ieG1ZMpnNakSZFlS95tPZ_FTKT_AH4
+
+{
+  "firstname": "Özge",
+  "lastname": "Gül",
+  "userName": "Özge Gül",
+  "email": "ozge@gmail.com",
+  "password": "OzgeGul23."
+}
+
+### Delete User
+
+DELETE http://localhost:8090/api/users/8dc80193-7cc3-48ba-9388-7447b8a76300
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZDNhMmFjNS01ODVkLTQwMWItODhkNy01YzEyOWI1MGFhYTgiLCJyb2xlcyI6WyJBRE1JTiJdLCJpYXQiOjE2OTA5NTM0MjAsImV4cCI6MTY5MDk1NjAxMn0.Yw2N3jl8FMJaWdiYolgfkr2URXLmnqDdYdRfXoLHbfcgm0RSQ6OaopK8Kh0pcuV_FmbswICWpavBBguswAXWQQ
+
+### Follow
+
+POST http://localhost:8090/api/users/0b71d11f-8437-4de9-b70c-ddd044e1aa23/follow/a5d82fad-e47f-49a6-82b7-d3f0b3d0b26d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJ1c2VySWQiOiIwYjcxZDExZi04NDM3LTRkZTktYjcwYy1kZGQwNDRlMWFhMjMiLCJzdWIiOiLDlnpnZSBHw7xsIiwiaWF0IjoxNjkxNjc3NTI2LCJleHAiOjE2OTE3Mjc1OTJ9.3Cki8VgPNeZm4ieG1ZMpnNakSZFlS95tPZ_FTKT_AH4
+
+### UnFollow
+
+DELETE http://localhost:8090/api/users/0b71d11f-8437-4de9-b70c-ddd044e1aa23/unfollow/a5d82fad-e47f-49a6-82b7-d3f0b3d0b26d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJ1c2VySWQiOiIwYjcxZDExZi04NDM3LTRkZTktYjcwYy1kZGQwNDRlMWFhMjMiLCJzdWIiOiLDlnpnZSBHw7xsIiwiaWF0IjoxNjkxNjc3NTI2LCJleHAiOjE2OTE3Mjc1OTJ9.3Cki8VgPNeZm4ieG1ZMpnNakSZFlS95tPZ_FTKT_AH4
+
+###Following
+
+GET http://localhost:8090/api/users/0b71d11f-8437-4de9-b70c-ddd044e1aa23/following
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJ1c2VySWQiOiIwYjcxZDExZi04NDM3LTRkZTktYjcwYy1kZGQwNDRlMWFhMjMiLCJzdWIiOiLDlnpnZSBHw7xsIiwiaWF0IjoxNjkxNjc3NTI2LCJleHAiOjE2OTE3Mjc1OTJ9.3Cki8VgPNeZm4ieG1ZMpnNakSZFlS95tPZ_FTKT_AH4
+
+### Add Favorite
+
+POST http://localhost:8090/api/users/0b71d11f-8437-4de9-b70c-ddd044e1aa23/favorites/ee9c93bf-88a8-471b-9931-cf609d1fd66d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJ1c2VySWQiOiIwYjcxZDExZi04NDM3LTRkZTktYjcwYy1kZGQwNDRlMWFhMjMiLCJzdWIiOiLDlnpnZSBHw7xsIiwiaWF0IjoxNjkxNjc3NTI2LCJleHAiOjE2OTE3Mjc1OTJ9.3Cki8VgPNeZm4ieG1ZMpnNakSZFlS95tPZ_FTKT_AH4
+
+### delete Favorite
+
+DELETE http://localhost:8090/api/users/0b71d11f-8437-4de9-b70c-ddd044e1aa23/removeSongFromFavorites/86e0f904-fef5-48e8-956e-17b773ce6d68
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJ1c2VySWQiOiIwYjcxZDExZi04NDM3LTRkZTktYjcwYy1kZGQwNDRlMWFhMjMiLCJzdWIiOiLDlnpnZSBHw7xsIiwiaWF0IjoxNjkxNjc3NTI2LCJleHAiOjE2OTE3Mjc1OTJ9.3Cki8VgPNeZm4ieG1ZMpnNakSZFlS95tPZ_FTKT_AH4
+
+### FavoriteSongs
+
+GET http://localhost:8090/api/users/0b71d11f-8437-4de9-b70c-ddd044e1aa23/favoriteSongs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJ1c2VySWQiOiIwYjcxZDExZi04NDM3LTRkZTktYjcwYy1kZGQwNDRlMWFhMjMiLCJzdWIiOiLDlnpnZSBHw7xsIiwiaWF0IjoxNjkxNjc3NTI2LCJleHAiOjE2OTE3Mjc1OTJ9.3Cki8VgPNeZm4ieG1ZMpnNakSZFlS95tPZ_FTKT_AH4
+
+### Common Favorite
+
+GET http://localhost:8090/api/users/0b71d11f-8437-4de9-b70c-ddd044e1aa23/commonFavorites/00a37550-acdf-48a9-ab10-7962392caaa9
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJ1c2VySWQiOiIwYjcxZDExZi04NDM3LTRkZTktYjcwYy1kZGQwNDRlMWFhMjMiLCJzdWIiOiLDlnpnZSBHw7xsIiwiaWF0IjoxNjkxNjc3NTI2LCJleHAiOjE2OTE3Mjc1OTJ9.3Cki8VgPNeZm4ieG1ZMpnNakSZFlS95tPZ_FTKT_AH4
+###

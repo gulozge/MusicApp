@@ -1,0 +1,64 @@
+###
+GET http://localhost:8090/api/songs
+Content-Type: application/json
+
+###
+GET http://localhost:8090/api/songs/86e0f904-fef5-48e8-956e-17b773ce6d68
+Content-Type: application/json
+
+
+###
+POST http://localhost:8090/api/songs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+{
+  "albumId": "4489a4a6-cb31-4733-8261-f280ba2d1a97",
+  "artistId": "f53c974e-b21d-44fe-b3e6-a0083ee2425b",
+  "name": "bbbb",
+  "description": "",
+  "category": "slow",
+  "lyrics": ""
+}
+
+###
+PUT http://localhost:8090/api/songs/a9fbe10c-80d7-4df3-9742-65ef2e77d8d5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+{
+  "albumId": "4489a4a6-cb31-4733-8261-f280ba2d1a97",
+  "artistId": "f53c974e-b21d-44fe-b3e6-a0083ee2425b",
+  "name": "aaaaaaaa",
+  "description": "",
+  "category": "slow",
+  "lyrics": ""
+}
+
+###
+
+DELETE http://localhost:8090/api/songs/1e846611-d084-4702-8bf0-dad0c04ad78b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+###
+GET http://localhost:8090/api/songs/4489a4a6-cb31-4733-8261-f280ba2d1a97/ListByAlbumId
+Content-Type: application/json
+
+###
+GET http://localhost:8090/api/songs/f53c974e-b21d-44fe-b3e6-a0083ee2425b/ListByArtistId
+Content-Type: application/json
+
+###
+GET http://localhost:8090/api/songs/aaaaaaaa/ListBySongName
+Content-Type: application/json
+
+###
+GET http://localhost:8090/api/songs/Sezen/ListByArtistNameAndSongName/aaaaaaaa
+Content-Type: application/json
+
+###
+GET http://localhost:8090/api/songs/MostFavoriteSongs/0/2
+Content-Type: application/json
+
+###

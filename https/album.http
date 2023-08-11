@@ -1,0 +1,36 @@
+###
+GET http://localhost:8090/api/albums
+Content-Type: application/json
+
+###
+GET http://localhost:8090/api/albums/4489a4a6-cb31-4733-8261-f280ba2d1a97
+Content-Type: application/json
+
+###
+POST http://localhost:8090/api/albums
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+{
+  "artistId": "04750caa-dc6f-4ded-961f-b31e72d224c3",
+  "name": "Test",
+  "description": "",
+  "releaseDate": "2023-01-01"
+}
+
+###
+PUT http://localhost:8090/api/albums/4489a4a6-cb31-4733-8261-f280ba2d1a97
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+{
+  "artistId": "f53c974e-b21d-44fe-b3e6-a0083ee2425b",
+  "name": "Sen Ağlama",
+  "description": "",
+  "releaseDate": "1984-09-06"
+}
+
+###
+DELETE http://localhost:8090/api/albums/9b7ffbd6-7f1c-4c11-adc6-03f347b55107
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8

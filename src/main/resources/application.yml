@@ -5,6 +5,11 @@ spring:
     ssl: 'false'
     host: localhost
     port: '6379'
+  cache:
+    type: redis
+    redis:
+      cache-null-values: 'true'
+
   datasource:
     username: postgres
     url: jdbc:postgresql://localhost:5432/musicAppdb
@@ -22,6 +27,9 @@ spring:
 server:
   port: '8090'
 
-jwt:
-  secretKey: abcdefgeggebzbzbzbzbzbzbzbzbzbzbzbzzzzzzzzbbbbbbbbbbzbbbbbbbbbbbzbbbbbbbbbbbbbzbbbbbbbbbbbzbbbbbbb
-  tokenValidityInSeconds: 36000000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'prometheus,health,info'
+

@@ -1,0 +1,43 @@
+###  getAll
+GET http://localhost:8090/api/admins
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+###  getById
+GET http://localhost:8090/api/admins/f426ffc5-396d-4ecc-ac26-a13293a6d079
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+###  registion
+POST http://localhost:8090/api/admins/registion
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "Admin123."
+}
+
+###  login
+
+POST http://localhost:8090/api/admins/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "Admin123."
+}
+
+###  update
+PUT http://localhost:8090/api/admins/b05fbbc8-7ccf-4b2c-acab-88a3f75a67b2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
+
+{
+  "email": "adminOz@gmail.com",
+  "password": "Admin123."
+}
+
+### delete
+DELETE http://localhost:8090/api/admins/b05fbbc8-7ccf-4b2c-acab-88a3f75a67b2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiYWRtaW5JZCI6ImY0MjZmZmM1LTM5NmQtNGVjYy1hYzI2LWExMzI5M2E2ZDA3OSIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY5MTU1OTIyNiwiZXhwIjoxNjkxODA5NTUzfQ.njKaoFftVpNdoUax2UPm4WS5DdPkxWyYDjewdTRGZW8
